@@ -1438,6 +1438,143 @@
             }
         }
 
+        /* ======================== CTA GRID (form + calendar) ======================== */
+        .cta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .cta-col {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius);
+            padding: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-col-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .cta-col-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(59, 130, 246, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .cta-col-icon svg {
+            color: var(--accent-light);
+            width: 22px;
+            height: 22px;
+        }
+
+        .cta-col-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 2px;
+        }
+
+        .cta-col-desc {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Calendar embed */
+        .cal-embed {
+            width: 100%;
+            min-height: 600px;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .cal-placeholder {
+            min-height: 500px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px dashed rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            gap: 16px;
+        }
+
+        .cal-placeholder-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: rgba(59, 130, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cal-placeholder-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--accent-light);
+        }
+
+        .cal-placeholder-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .cal-placeholder-text {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.55);
+            max-width: 320px;
+            line-height: 1.7;
+        }
+
+        .cal-placeholder-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding: 12px 24px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .cal-placeholder-link:hover {
+            background: var(--accent-dark);
+        }
+
+        @media (max-width: 968px) {
+            .cta-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .cta-col {
+                padding: 24px;
+            }
+        }
+
         /* ======================== FORM DÉPLIABLE ======================== */
         .form-toggle {
             display: inline-flex;
@@ -2442,87 +2579,110 @@
             <div class="cta-content">
                 <h2 class="cta-title">Prêt à lancer votre site ?</h2>
                 <p class="cta-desc">
-                    Contactez-moi pour un devis gratuit et sans engagement. Je vous réponds en moins de 24h.
+                    Contactez-moi pour un devis gratuit ou réservez directement un appel découverte. Je vous réponds en moins de 24h.
                 </p>
 
-                <button class="form-toggle" id="formToggle" onclick="toggleForm()">
-                    <i data-lucide="file-text" style="width:18px;height:18px;"></i>
-                    <span>Décrivez votre projet</span>
-                    <i data-lucide="chevron-down" style="width:18px;height:18px;" class="toggle-icon"></i>
-                </button>
+                <div class="cta-grid">
 
-                <div class="form-collapsible" id="formCollapsible">
-                    <form class="contact-form" id="contactForm" onsubmit="submitForm(event)" action="https://formsubmit.co/qop.pro@gmail.com" method="POST">
-                        <!-- FormSubmit options -->
-                        <input type="hidden" name="_subject" value="Nouvelle demande de site - Z Development">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_autoresponse" value="Merci pour votre message ! Je l'ai bien reçu et je vous réponds dans les 24h. — Zine-Eddine">
-                        <input type="text" name="_honey" style="display:none">
+                    <!-- COLONNE GAUCHE : FORMULAIRE -->
+                    <div class="cta-col">
+                        <div class="cta-col-header">
+                            <div class="cta-col-icon">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                            <div>
+                                <div class="cta-col-title">Décrivez votre projet</div>
+                                <div class="cta-col-desc">Je vous réponds par mail sous 24h</div>
+                            </div>
+                        </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Votre nom</label>
-                                <input type="text" class="form-input" name="nom" placeholder="Jean Dupont" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Votre email</label>
-                                <input type="email" class="form-input" name="email" placeholder="jean@exemple.com" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Votre téléphone</label>
-                                <input type="tel" class="form-input" name="telephone" placeholder="06 12 34 56 78">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Votre activité</label>
-                                <input type="text" class="form-input" name="activite" placeholder="Restaurant, salon, boutique...">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Type de site souhaité</label>
-                                <select class="form-select" name="type_site" required>
-                                    <option value="" disabled selected>Choisir...</option>
-                                    <option value="Site Vitrine">Site Vitrine</option>
-                                    <option value="Site avec Réservation">Site avec Réservation</option>
-                                    <option value="Site E-commerce">Site E-commerce</option>
-                                    <option value="Autre / Je ne sais pas">Autre / Je ne sais pas</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Budget estimé</label>
-                                <select class="form-select" name="budget">
-                                    <option value="" disabled selected>Choisir...</option>
-                                    <option value="Moins de 1 000 €">Moins de 1 000 €</option>
-                                    <option value="1 000 € – 2 000 €">1 000 € – 2 000 €</option>
-                                    <option value="2 000 € – 3 000 €">2 000 € – 3 000 €</option>
-                                    <option value="Plus de 3 000 €">Plus de 3 000 €</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group full">
-                                <label class="form-label">Décrivez votre projet en quelques mots</label>
-                                <textarea class="form-textarea" name="description" placeholder="Ex : Je souhaite un site pour mon restaurant avec le menu, les horaires et un système de réservation en ligne..."></textarea>
-                            </div>
-                        </div>
-                        <button type="submit" class="form-submit" id="formSubmitBtn">
-                            <i data-lucide="send" style="width:18px;height:18px;"></i>
-                            <span id="formSubmitLabel">Envoyer ma demande</span>
-                        </button>
+                        <form class="contact-form" id="contactForm" onsubmit="submitForm(event)" action="https://formsubmit.co/qop.pro@gmail.com" method="POST" style="background:transparent;border:none;padding:0;margin:0;">
+                            <input type="hidden" name="_subject" value="Nouvelle demande de site - Z Development">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_autoresponse" value="Merci pour votre message ! Je l'ai bien reçu et je vous réponds dans les 24h. — Zine-Eddine">
+                            <input type="text" name="_honey" style="display:none">
 
-                        <div id="formSuccess" style="display:none; margin-top:18px; padding:18px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:10px; color:#10B981; text-align:center; font-size:0.9rem;">
-                            ✅ Demande envoyée ! Je vous réponds dans les 24h.
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Nom</label>
+                                    <input type="text" class="form-input" name="nom" placeholder="Jean Dupont" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-input" name="email" placeholder="jean@exemple.com" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Téléphone</label>
+                                    <input type="tel" class="form-input" name="telephone" placeholder="06 12 34 56 78">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Activité</label>
+                                    <input type="text" class="form-input" name="activite" placeholder="Restaurant, salon...">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Type de site</label>
+                                    <select class="form-select" name="type_site" required>
+                                        <option value="" disabled selected>Choisir...</option>
+                                        <option value="Site Vitrine">Site Vitrine</option>
+                                        <option value="Site avec Réservation">Site avec Réservation</option>
+                                        <option value="Site E-commerce">Site E-commerce</option>
+                                        <option value="Autre / Je ne sais pas">Autre</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Budget</label>
+                                    <select class="form-select" name="budget">
+                                        <option value="" disabled selected>Choisir...</option>
+                                        <option value="Moins de 1 000 €">< 1 000 €</option>
+                                        <option value="1 000 € – 2 000 €">1 000 – 2 000 €</option>
+                                        <option value="2 000 € – 3 000 €">2 000 – 3 000 €</option>
+                                        <option value="Plus de 3 000 €">> 3 000 €</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group full">
+                                    <label class="form-label">Décrivez votre projet</label>
+                                    <textarea class="form-textarea" name="description" placeholder="Ex : Je souhaite un site pour mon restaurant avec le menu et la réservation..."></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="form-submit" id="formSubmitBtn">
+                                <i data-lucide="send" style="width:18px;height:18px;"></i>
+                                <span id="formSubmitLabel">Envoyer ma demande</span>
+                            </button>
+
+                            <div id="formSuccess" style="display:none; margin-top:18px; padding:18px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:10px; color:#10B981; text-align:center; font-size:0.9rem;">
+                                ✅ Demande envoyée ! Je vous réponds dans les 24h.
+                            </div>
+                            <div id="formError" style="display:none; margin-top:18px; padding:18px; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:10px; color:#EF4444; text-align:center; font-size:0.9rem;">
+                                ⚠️ Une erreur est survenue. Réessayez ou contactez-moi par mail.
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- COLONNE DROITE : CALENDRIER -->
+                    <div class="cta-col">
+                        <div class="cta-col-header">
+                            <div class="cta-col-icon">
+                                <i data-lucide="calendar"></i>
+                            </div>
+                            <div>
+                                <div class="cta-col-title">Réservez un appel</div>
+                                <div class="cta-col-desc">Échange découverte de 30 min, gratuit</div>
+                            </div>
                         </div>
-                        <div id="formError" style="display:none; margin-top:18px; padding:18px; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:10px; color:#EF4444; text-align:center; font-size:0.9rem;">
-                            ⚠️ Une erreur est survenue. Réessayez ou contactez-moi par mail.
-                        </div>
-                    </form>
+
+                        <iframe class="cal-embed" src="https://cal.eu/zdevelopment" loading="lazy" title="Réserver un appel - Z Development"></iframe>
+                    </div>
+
                 </div>
 
-                <div class="cta-buttons">
+                <div class="cta-buttons" style="margin-top:48px;">
                     <a href="tel:+33745276614" class="btn btn-accent">
                         <i data-lucide="phone" style="width:18px;height:18px;"></i>
                         <span>Appelez-moi</span>
