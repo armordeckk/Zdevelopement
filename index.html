@@ -40,6 +40,443 @@
             --radius-sm: 10px;
         }
 
+        /* ======================== FADE-IN SECTIONS ======================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-stagger > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-in-stagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+        .fade-in-stagger.visible > *:nth-child(2) { transition-delay: 0.08s; opacity: 1; transform: translateY(0); }
+        .fade-in-stagger.visible > *:nth-child(3) { transition-delay: 0.16s; opacity: 1; transform: translateY(0); }
+        .fade-in-stagger.visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
+        .fade-in-stagger.visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
+        .fade-in-stagger.visible > *:nth-child(6) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+
+        /* ======================== CURSOR TRAIL ======================== */
+        .cursor-trail-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9996;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            .cursor-trail-dot { display: none; }
+        }
+
+        /* ======================== HERO LOGOS ======================== */
+        .hero-logos {
+            position: relative;
+            z-index: 2;
+            margin-top: 70px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .hero-logos-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 24px;
+        }
+
+        .hero-logos-track-wrap {
+            overflow: hidden;
+            width: 100%;
+            mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+        }
+
+        .hero-logos-track {
+            display: flex;
+            gap: 60px;
+            white-space: nowrap;
+            animation: heroLogosScroll 28s linear infinite;
+            width: max-content;
+            align-items: center;
+        }
+
+        .hero-logos-set {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .client-logo-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.55);
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .client-logo-tag:hover {
+            color: var(--white);
+        }
+
+        .client-logo-tag .badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font);
+            font-style: normal;
+            font-size: 0.85rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        @keyframes heroLogosScroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* ======================== MARQUEE ======================== */
+        .marquee {
+            background: var(--primary);
+            color: var(--white);
+            padding: 24px 0;
+            overflow: hidden;
+            position: relative;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 60px;
+            white-space: nowrap;
+            animation: marqueeScroll 35s linear infinite;
+            width: max-content;
+        }
+
+        .marquee-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 60px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            font-family: var(--font-display);
+            font-style: italic;
+        }
+
+        .marquee-item span {
+            color: var(--white);
+        }
+
+        .marquee-item .accent {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .marquee-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 0 12px var(--accent);
+        }
+
+        @keyframes marqueeScroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+
+        /* ======================== BOUTONS MAGNÉTIQUES ======================== */
+        .magnetic {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .magnetic-inner {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ======================== HOVER PORTFOLIO 3D ======================== */
+        .portfolio-card .portfolio-image {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            will-change: transform;
+        }
+
+        .portfolio-card .portfolio-image img,
+        .portfolio-card .portfolio-image > div {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .portfolio-card:hover .portfolio-image img,
+        .portfolio-card:hover .portfolio-image > div {
+            transform: scale(1.06);
+        }
+
+        /* ======================== GRADIENT BLOBS HERO ======================== */
+        .hero-blobs {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            mix-blend-mode: screen;
+            will-change: transform;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #3B82F6 0%, transparent 70%);
+            top: -150px;
+            left: -150px;
+            animation: blobFloat1 18s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #8B5CF6 0%, transparent 70%);
+            bottom: -200px;
+            right: -150px;
+            animation: blobFloat2 22s ease-in-out infinite;
+        }
+
+        .blob-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #06B6D4 0%, transparent 70%);
+            top: 40%;
+            right: 30%;
+            animation: blobFloat3 25s ease-in-out infinite;
+            opacity: 0.35;
+        }
+
+        @keyframes blobFloat1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(120px, 80px) scale(1.15); }
+            66% { transform: translate(60px, 200px) scale(0.95); }
+        }
+
+        @keyframes blobFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-180px, -120px) scale(1.2); }
+        }
+
+        @keyframes blobFloat3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-100px, 60px) scale(0.9); }
+            75% { transform: translate(80px, -80px) scale(1.1); }
+        }
+
+        /* ======================== LOADING SCREEN ======================== */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--primary);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -1px;
+            position: relative;
+            display: flex;
+            gap: 2px;
+        }
+
+        .loader-logo span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: loaderLetterIn 0.5s ease forwards;
+        }
+
+        .loader-logo span.dot {
+            color: var(--accent-light);
+        }
+
+        @keyframes loaderLetterIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loader-bar {
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .loader-bar::after {
+            content: '';
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            animation: loaderBarGrow 1.6s ease forwards;
+        }
+
+        @keyframes loaderBarGrow {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        /* ======================== CUSTOM CURSOR ======================== */
+        .cursor-dot,
+        .cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            mix-blend-mode: difference;
+            transition: transform 0.15s ease, width 0.25s ease, height 0.25s ease, opacity 0.3s ease;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--white);
+            border-radius: 50%;
+        }
+
+        .cursor-ring {
+            width: 38px;
+            height: 38px;
+            border: 1.5px solid var(--white);
+            border-radius: 50%;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+        }
+
+        .cursor-ring.hover {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .cursor-dot.hover {
+            width: 0;
+            height: 0;
+        }
+
+        body.cursor-ready .cursor-dot,
+        body.cursor-ready .cursor-ring {
+            opacity: 1;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            body.cursor-ready,
+            body.cursor-ready * {
+                cursor: none !important;
+            }
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            .cursor-dot, .cursor-ring { display: none; }
+        }
+
+        /* ======================== SCROLL PROGRESS (bonus) ======================== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            z-index: 9997;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* ======================== TEXT REVEAL ======================== */
+        .reveal-text {
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .reveal-text .word {
+            display: inline-block;
+            transform: translateY(110%);
+            opacity: 0;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+        }
+
+        .reveal-text.in-view .word {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .reveal-text .word:nth-child(1) { transition-delay: 0s; }
+        .reveal-text .word:nth-child(2) { transition-delay: 0.05s; }
+        .reveal-text .word:nth-child(3) { transition-delay: 0.1s; }
+        .reveal-text .word:nth-child(4) { transition-delay: 0.15s; }
+        .reveal-text .word:nth-child(5) { transition-delay: 0.2s; }
+        .reveal-text .word:nth-child(6) { transition-delay: 0.25s; }
+        .reveal-text .word:nth-child(7) { transition-delay: 0.3s; }
+        .reveal-text .word:nth-child(8) { transition-delay: 0.35s; }
+        .reveal-text .word:nth-child(9) { transition-delay: 0.4s; }
+        .reveal-text .word:nth-child(10) { transition-delay: 0.45s; }
+        .reveal-text .word:nth-child(n+11) { transition-delay: 0.5s; }
+
         /* ======================== NAVBAR ======================== */
         .navbar {
             position: fixed;
@@ -144,7 +581,7 @@
         /* ======================== BASE ======================== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; }
+        /* scroll smooth géré par Lenis */
 
         body {
             font-family: var(--font);
@@ -152,6 +589,11 @@
             background: var(--bg);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        html {
+            overflow-x: hidden;
         }
 
         /* Fade in animation */
@@ -218,8 +660,16 @@
 
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             max-width: 720px;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .hero .container,
+        .hero-content,
+        .hero-logos {
+            min-width: 0;
         }
 
         .hero-badge {
@@ -1337,10 +1787,171 @@
                 flex-direction: column;
                 gap: 16px;
             }
+
+            /* Hero mobile */
+            .hero {
+                padding: 100px 0 60px;
+                min-height: auto;
+            }
+
+            .hero-title {
+                font-size: 1.7rem !important;
+                line-height: 1.2;
+                letter-spacing: -0.5px;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-cta {
+                gap: 12px;
+            }
+
+            .hero-cta .btn {
+                padding: 14px 22px;
+                font-size: 0.85rem;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            /* Navbar mobile : on garde le toggle mais on cache logo trop long si besoin */
+            .navbar-logo {
+                font-size: 1.05rem;
+            }
+
+            /* Marquee : taille plus petite */
+            .marquee-item {
+                font-size: 1.05rem;
+                gap: 40px;
+            }
+
+            .marquee-track {
+                gap: 40px;
+            }
+
+            /* Logos clients hero */
+            .hero-logos {
+                margin-top: 50px;
+                padding-top: 30px;
+            }
+
+            .client-logo-tag {
+                font-size: 1rem;
+            }
+
+            .hero-logos-track,
+            .hero-logos-set {
+                gap: 36px;
+            }
+
+            /* Section titles plus compacts */
+            .section-title {
+                font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            /* Stats : 2 colonnes au lieu de 4 (déjà fait) */
+            .stats-section {
+                padding: 40px 0;
+            }
+
+            .stats-grid {
+                gap: 24px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem !important;
+            }
+
+            /* Portfolio cards plus compacts */
+            .portfolio-title {
+                font-size: 1.5rem;
+            }
+
+            .portfolio-desc {
+                font-size: 0.95rem;
+            }
+
+            /* Footer */
+            .footer-grid {
+                gap: 28px;
+            }
+
+            /* CTA */
+            .cta-title {
+                font-size: clamp(1.7rem, 6vw, 2.4rem);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cta-buttons .btn {
+                justify-content: center;
+            }
+
+            .cta-contact {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+
+            /* Form mobile */
+            .contact-form {
+                padding: 24px 18px;
+            }
+
+            /* Désactive curseur custom et trail sur mobile */
+            .cursor-dot, .cursor-ring, .cursor-trail-dot {
+                display: none !important;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- ======================== LOADING SCREEN ======================== -->
+    <div class="loader" id="loader">
+        <div class="loader-logo">
+            <span style="animation-delay:0s">Z</span>
+            <span class="dot" style="animation-delay:0.1s">.</span>
+            <span style="animation-delay:0.2s">D</span>
+            <span style="animation-delay:0.25s">e</span>
+            <span style="animation-delay:0.3s">v</span>
+            <span style="animation-delay:0.35s">e</span>
+            <span style="animation-delay:0.4s">l</span>
+            <span style="animation-delay:0.45s">o</span>
+            <span style="animation-delay:0.5s">p</span>
+            <span style="animation-delay:0.55s">m</span>
+            <span style="animation-delay:0.6s">e</span>
+            <span style="animation-delay:0.65s">n</span>
+            <span style="animation-delay:0.7s">t</span>
+        </div>
+        <div class="loader-bar"></div>
+    </div>
+
+    <!-- ======================== CUSTOM CURSOR ======================== -->
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- ======================== CURSOR TRAIL ======================== -->
+    <div class="cursor-trail-dot" id="trail0"></div>
+    <div class="cursor-trail-dot" id="trail1"></div>
+    <div class="cursor-trail-dot" id="trail2"></div>
+    <div class="cursor-trail-dot" id="trail3"></div>
+    <div class="cursor-trail-dot" id="trail4"></div>
+
+    <!-- ======================== SCROLL PROGRESS ======================== -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- ======================== NAVBAR ======================== -->
     <nav class="navbar" id="navbar">
@@ -1354,7 +1965,7 @@
                     <a href="#services">Services</a>
                     <a href="#portfolio">Réalisations</a>
                     <a href="#faq">FAQ</a>
-                    <a href="#contact" class="navbar-cta">Me contacter</a>
+                    <a href="#contact" class="navbar-cta magnetic" data-magnetic>Me contacter</a>
                 </div>
             </div>
         </div>
@@ -1362,6 +1973,11 @@
 
     <!-- ======================== HERO ======================== -->
     <section class="hero">
+        <div class="hero-blobs">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge animate animate-delay-1">
@@ -1379,21 +1995,17 @@
                 </p>
 
                 <div class="hero-cta animate animate-delay-3">
-                    <a href="#contact" class="btn btn-accent">
-                        <span>Demander un devis</span>
+                    <a href="#contact" class="btn btn-accent magnetic" data-magnetic>
+                        <span class="magnetic-inner">Demander un devis</span>
                         <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
                     </a>
-                    <a href="#contact" class="btn btn-ghost">
+                    <a href="#contact" class="btn btn-ghost magnetic" data-magnetic>
                         <i data-lucide="phone" style="width:18px;height:18px;"></i>
-                        <span>Me contacter</span>
+                        <span class="magnetic-inner">Me contacter</span>
                     </a>
                 </div>
 
                 <div class="hero-proof animate animate-delay-4">
-                    <div class="proof-item">
-                        <i data-lucide="check-circle" class="proof-icon"></i>
-                        <span class="proof-text">Sites livrés en 7 jours</span>
-                    </div>
                     <div class="proof-item">
                         <i data-lucide="check-circle" class="proof-icon"></i>
                         <span class="proof-text">100% responsive mobile</span>
@@ -1403,9 +2015,90 @@
                         <span class="proof-text">Maintenance incluse</span>
                     </div>
                 </div>
+
+                <!-- Marquee logos clients -->
+                <div class="hero-logos">
+                    <div class="hero-logos-label">Ils me font confiance</div>
+                    <div class="hero-logos-track-wrap">
+                        <div class="hero-logos-track">
+                            <div class="hero-logos-set">
+                                <a href="https://www.eldjaouda.fr/" target="_blank" class="client-logo-tag">
+                                    <span class="badge" style="background:linear-gradient(135deg,#5A0F1D,#7B1E2D);color:#C8953E;">EJ</span>
+                                    Boucherie El Djaouda
+                                </a>
+                                <a href="https://ellington-site.vercel.app/" target="_blank" class="client-logo-tag">
+                                    <span class="badge" style="background:linear-gradient(135deg,#0f1d2e,#1a3a52);color:#C8A86C;">EL</span>
+                                    Ellington
+                                </a>
+                                <a href="https://sitebyrycords.vercel.app/" target="_blank" class="client-logo-tag">
+                                    <span class="badge" style="background:linear-gradient(135deg,#0a0a0a,#1a1a2e);color:#fff;">BR</span>
+                                    By Rycords
+                                </a>
+                            </div>
+                            <!-- Duplication pour boucle -->
+                            <div class="hero-logos-set" aria-hidden="true">
+                                <a href="https://www.eldjaouda.fr/" target="_blank" class="client-logo-tag">
+                                    <span class="badge" style="background:linear-gradient(135deg,#5A0F1D,#7B1E2D);color:#C8953E;">EJ</span>
+                                    Boucherie El Djaouda
+                                </a>
+                                <a href="https://ellington-site.vercel.app/" target="_blank" class="client-logo-tag">
+                                    <span class="badge" style="background:linear-gradient(135deg,#0f1d2e,#1a3a52);color:#C8A86C;">EL</span>
+                                    Ellington
+                                </a>
+                                <a href="https://sitebyrycords.vercel.app/" target="_blank" class="client-logo-tag">
+                                    <span class="badge" style="background:linear-gradient(135deg,#0a0a0a,#1a1a2e);color:#fff;">BR</span>
+                                    By Rycords
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- ======================== MARQUEE ======================== -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <div class="marquee-item">
+                <span>Création web</span>
+                <span class="marquee-dot"></span>
+                <span class="accent">Design sur mesure</span>
+                <span class="marquee-dot"></span>
+                <span>SEO</span>
+                <span class="marquee-dot"></span>
+                <span class="accent">E-commerce</span>
+                <span class="marquee-dot"></span>
+                <span>Maintenance</span>
+                <span class="marquee-dot"></span>
+                <span class="accent">Hébergement</span>
+                <span class="marquee-dot"></span>
+                <span>Sites vitrines</span>
+                <span class="marquee-dot"></span>
+                <span class="accent">Responsive</span>
+                <span class="marquee-dot"></span>
+            </div>
+            <!-- Duplication pour boucle infinie -->
+            <div class="marquee-item">
+                <span>Création web</span>
+                <span class="marquee-dot"></span>
+                <span class="accent">Design sur mesure</span>
+                <span class="marquee-dot"></span>
+                <span>SEO</span>
+                <span class="marquee-dot"></span>
+                <span class="accent">E-commerce</span>
+                <span class="marquee-dot"></span>
+                <span>Maintenance</span>
+                <span class="marquee-dot"></span>
+                <span class="accent">Hébergement</span>
+                <span class="marquee-dot"></span>
+                <span>Sites vitrines</span>
+                <span class="marquee-dot"></span>
+                <span class="accent">Responsive</span>
+                <span class="marquee-dot"></span>
+            </div>
+        </div>
+    </div>
 
     <!-- ======================== STATS ======================== -->
     <section class="stats-section">
@@ -1933,9 +2626,313 @@
         </div>
     </div>
 
+    <!-- Lenis smooth scroll -->
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
     <script>
         if (typeof lucide !== 'undefined') lucide.createIcons();
 
+        // ============ LOADING SCREEN ============
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+                document.body.classList.add('cursor-ready');
+            }, 1700);
+        });
+
+        // ============ SMOOTH SCROLL (Lenis) ============
+        var lenis = null;
+        if (typeof Lenis !== 'undefined') {
+            lenis = new Lenis({
+                duration: 1.4,
+                easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+                smoothWheel: true,
+                wheelMultiplier: 1,
+                lerp: 0.08
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+            document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    var href = this.getAttribute('href');
+                    if (href.length > 1 && document.querySelector(href)) {
+                        e.preventDefault();
+                        lenis.scrollTo(href, { offset: -80, duration: 1.5 });
+                    }
+                });
+            });
+        }
+
+        // ============ CUSTOM CURSOR ============
+        (function() {
+            var dot = document.getElementById('cursorDot');
+            var ring = document.getElementById('cursorRing');
+            if (!dot || !ring) return;
+
+            var mouseX = 0, mouseY = 0;
+            var ringX = 0, ringY = 0;
+
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                dot.style.transform = 'translate(' + mouseX + 'px, ' + mouseY + 'px) translate(-50%, -50%)';
+            });
+
+            function animateRing() {
+                ringX += (mouseX - ringX) * 0.18;
+                ringY += (mouseY - ringY) * 0.18;
+                ring.style.transform = 'translate(' + ringX + 'px, ' + ringY + 'px) translate(-50%, -50%)';
+                requestAnimationFrame(animateRing);
+            }
+            animateRing();
+
+            // Hover state sur les éléments interactifs
+            var hoverables = 'a, button, .faq-question, .form-toggle, .portfolio-card, .service-card, .why-card, .testimonial-card, input, select, textarea';
+            document.querySelectorAll(hoverables).forEach(function(el) {
+                el.addEventListener('mouseenter', function() {
+                    ring.classList.add('hover');
+                    dot.classList.add('hover');
+                });
+                el.addEventListener('mouseleave', function() {
+                    ring.classList.remove('hover');
+                    dot.classList.remove('hover');
+                });
+            });
+        })();
+
+        // ============ CURSOR TRAIL ============
+        (function() {
+            var trails = [];
+            for (var i = 0; i < 5; i++) {
+                var el = document.getElementById('trail' + i);
+                if (el) trails.push({ el: el, x: 0, y: 0 });
+            }
+            if (!trails.length) return;
+
+            var mouseX = 0, mouseY = 0;
+            var hasMoved = false;
+
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                hasMoved = true;
+            });
+
+            function loop() {
+                if (hasMoved) {
+                    var prevX = mouseX;
+                    var prevY = mouseY;
+                    trails.forEach(function(t, i) {
+                        t.x += (prevX - t.x) * (0.25 - i * 0.04);
+                        t.y += (prevY - t.y) * (0.25 - i * 0.04);
+                        t.el.style.transform = 'translate(' + t.x + 'px, ' + t.y + 'px) translate(-50%, -50%)';
+                        t.el.style.opacity = (0.55 - i * 0.1).toString();
+                        t.el.style.width = (6 - i * 0.6) + 'px';
+                        t.el.style.height = (6 - i * 0.6) + 'px';
+                        prevX = t.x;
+                        prevY = t.y;
+                    });
+                }
+                requestAnimationFrame(loop);
+            }
+            loop();
+        })();
+
+        // ============ FADE-IN AU SCROLL ============
+        (function() {
+            // Auto-applique fade-in aux sections sauf hero/loader/etc
+            var fadeTargets = [
+                '.section-services .services-grid',
+                '.section-portfolio .portfolio-grid',
+                '.section-process .process-grid',
+                '.why-grid',
+                '.testimonials-grid',
+                '.faq-list',
+                '.cta-content',
+                '.stats-grid'
+            ];
+
+            // Fade-in stagger pour les grilles d'éléments
+            fadeTargets.forEach(function(sel) {
+                document.querySelectorAll(sel).forEach(function(el) {
+                    el.classList.add('fade-in-stagger');
+                });
+            });
+
+            // Fade-in simple pour les section-header
+            document.querySelectorAll('.section-header').forEach(function(el) {
+                el.classList.add('fade-in');
+            });
+
+            if ('IntersectionObserver' in window) {
+                var fadeObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            fadeObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+                document.querySelectorAll('.fade-in, .fade-in-stagger').forEach(function(el) {
+                    fadeObserver.observe(el);
+                });
+            } else {
+                document.querySelectorAll('.fade-in, .fade-in-stagger').forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        })();
+
+        // ============ BOUTONS MAGNÉTIQUES ============
+        (function() {
+            var magnetics = document.querySelectorAll('[data-magnetic]');
+            magnetics.forEach(function(el) {
+                var inner = el.querySelector('.magnetic-inner') || el;
+                var strength = 0.35;
+                var innerStrength = 0.6;
+
+                el.addEventListener('mousemove', function(e) {
+                    var rect = el.getBoundingClientRect();
+                    var x = e.clientX - rect.left - rect.width / 2;
+                    var y = e.clientY - rect.top - rect.height / 2;
+                    el.style.transform = 'translate(' + (x * strength) + 'px, ' + (y * strength) + 'px)';
+                    if (inner !== el) {
+                        inner.style.transform = 'translate(' + (x * innerStrength) + 'px, ' + (y * innerStrength) + 'px)';
+                    }
+                });
+
+                el.addEventListener('mouseleave', function() {
+                    el.style.transform = 'translate(0, 0)';
+                    if (inner !== el) inner.style.transform = 'translate(0, 0)';
+                });
+            });
+        })();
+
+        // ============ HOVER PORTFOLIO 3D TILT ============
+        (function() {
+            var cards = document.querySelectorAll('.portfolio-card');
+            var maxTilt = 8; // degrés
+
+            cards.forEach(function(card) {
+                var image = card.querySelector('.portfolio-image');
+                if (!image) return;
+
+                card.addEventListener('mousemove', function(e) {
+                    var rect = image.getBoundingClientRect();
+                    var x = e.clientX - rect.left;
+                    var y = e.clientY - rect.top;
+                    var centerX = rect.width / 2;
+                    var centerY = rect.height / 2;
+                    var rotateY = ((x - centerX) / centerX) * maxTilt;
+                    var rotateX = -((y - centerY) / centerY) * maxTilt;
+
+                    image.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-6px)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    image.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                });
+            });
+        })();
+
+        // ============ SCROLL PROGRESS ============
+        (function() {
+            var bar = document.getElementById('scrollProgress');
+            if (!bar) return;
+            window.addEventListener('scroll', function() {
+                var scroll = window.scrollY;
+                var height = document.documentElement.scrollHeight - window.innerHeight;
+                var pct = (scroll / height) * 100;
+                bar.style.width = pct + '%';
+            });
+        })();
+
+        // ============ TEXT REVEAL ============
+        (function() {
+            // Auto-applique reveal-text à tous les .section-title
+            document.querySelectorAll('.section-title').forEach(function(el) {
+                if (!el.classList.contains('reveal-text')) el.classList.add('reveal-text');
+            });
+
+            document.querySelectorAll('.reveal-text').forEach(function(el) {
+                if (el.dataset.processed) return;
+                el.dataset.processed = '1';
+                var text = el.textContent.trim();
+                var words = text.split(/\s+/);
+                el.innerHTML = '';
+                words.forEach(function(w, i) {
+                    var span = document.createElement('span');
+                    span.className = 'word';
+                    span.textContent = w;
+                    el.appendChild(span);
+                    if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+                });
+            });
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) entry.target.classList.add('in-view');
+                    });
+                }, { threshold: 0.2 });
+
+                document.querySelectorAll('.reveal-text').forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                document.querySelectorAll('.reveal-text').forEach(function(el) {
+                    el.classList.add('in-view');
+                });
+            }
+        })();
+
+        // ============ COMPTEURS ANIMÉS ============
+        (function() {
+            function animateCounter(el) {
+                var raw = el.textContent.trim();
+                var match = raw.match(/^(\d+)(.*)$/);
+                if (!match) return;
+                var target = parseInt(match[1], 10);
+                var suffix = match[2];
+                var duration = 1500;
+                var start = performance.now();
+
+                function step(now) {
+                    var elapsed = now - start;
+                    var progress = Math.min(elapsed / duration, 1);
+                    // easeOutCubic
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    var current = Math.floor(eased * target);
+                    el.textContent = current + suffix;
+                    if (progress < 1) requestAnimationFrame(step);
+                    else el.textContent = target + suffix;
+                }
+                requestAnimationFrame(step);
+            }
+
+            if ('IntersectionObserver' in window) {
+                var counterObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting && !entry.target.dataset.animated) {
+                            entry.target.dataset.animated = '1';
+                            animateCounter(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                document.querySelectorAll('.stat-number span').forEach(function(el) {
+                    counterObserver.observe(el);
+                });
+            }
+        })();
+
+        // ============ FORMS / FAQ / NAVBAR ============
         function toggleForm() {
             var btn = document.getElementById('formToggle');
             var form = document.getElementById('formCollapsible');
@@ -1946,40 +2943,27 @@
         function submitForm(e) {
             e.preventDefault();
             var f = e.target;
-            var nom = f.nom.value;
-            var email = f.email.value;
-            var tel = f.telephone.value;
-            var activite = f.activite.value;
-            var type = f.type_site.value;
-            var budget = f.budget.value;
-            var desc = f.description.value;
-
-            var subject = encodeURIComponent('Nouvelle demande de site – ' + nom);
+            var subject = encodeURIComponent('Nouvelle demande de site – ' + f.nom.value);
             var body = encodeURIComponent(
-                'Nom : ' + nom + '\n' +
-                'Email : ' + email + '\n' +
-                'Téléphone : ' + tel + '\n' +
-                'Activité : ' + activite + '\n' +
-                'Type de site : ' + type + '\n' +
-                'Budget : ' + budget + '\n\n' +
-                'Description du projet :\n' + desc
+                'Nom : ' + f.nom.value + '\n' +
+                'Email : ' + f.email.value + '\n' +
+                'Téléphone : ' + f.telephone.value + '\n' +
+                'Activité : ' + f.activite.value + '\n' +
+                'Type de site : ' + f.type_site.value + '\n' +
+                'Budget : ' + f.budget.value + '\n\n' +
+                'Description du projet :\n' + f.description.value
             );
-
             window.location.href = 'mailto:contact@votreemail.com?subject=' + subject + '&body=' + body;
         }
 
         function toggleFaq(btn) {
-            var item = btn.parentElement;
-            item.classList.toggle('open');
+            btn.parentElement.classList.toggle('open');
         }
 
         window.addEventListener('scroll', function() {
             var navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
         });
     </script>
 </body>
