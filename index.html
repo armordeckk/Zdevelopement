@@ -2452,7 +2452,14 @@
                 </button>
 
                 <div class="form-collapsible" id="formCollapsible">
-                    <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+                    <form class="contact-form" id="contactForm" onsubmit="submitForm(event)" action="https://formsubmit.co/qop.pro@gmail.com" method="POST">
+                        <!-- FormSubmit options -->
+                        <input type="hidden" name="_subject" value="Nouvelle demande de site - Z Development">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_autoresponse" value="Merci pour votre message ! Je l'ai bien reçu et je vous réponds dans les 24h. — Zine-Eddine">
+                        <input type="text" name="_honey" style="display:none">
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Votre nom</label>
@@ -2478,20 +2485,20 @@
                                 <label class="form-label">Type de site souhaité</label>
                                 <select class="form-select" name="type_site" required>
                                     <option value="" disabled selected>Choisir...</option>
-                                    <option value="vitrine">Site Vitrine</option>
-                                    <option value="reservation">Site avec Réservation</option>
-                                    <option value="ecommerce">Site E-commerce</option>
-                                    <option value="autre">Autre / Je ne sais pas</option>
+                                    <option value="Site Vitrine">Site Vitrine</option>
+                                    <option value="Site avec Réservation">Site avec Réservation</option>
+                                    <option value="Site E-commerce">Site E-commerce</option>
+                                    <option value="Autre / Je ne sais pas">Autre / Je ne sais pas</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Budget estimé</label>
                                 <select class="form-select" name="budget">
                                     <option value="" disabled selected>Choisir...</option>
-                                    <option value="<1000">Moins de 1 000 €</option>
-                                    <option value="1000-2000">1 000 € – 2 000 €</option>
-                                    <option value="2000-3000">2 000 € – 3 000 €</option>
-                                    <option value=">3000">Plus de 3 000 €</option>
+                                    <option value="Moins de 1 000 €">Moins de 1 000 €</option>
+                                    <option value="1 000 € – 2 000 €">1 000 € – 2 000 €</option>
+                                    <option value="2 000 € – 3 000 €">2 000 € – 3 000 €</option>
+                                    <option value="Plus de 3 000 €">Plus de 3 000 €</option>
                                 </select>
                             </div>
                         </div>
@@ -2501,10 +2508,17 @@
                                 <textarea class="form-textarea" name="description" placeholder="Ex : Je souhaite un site pour mon restaurant avec le menu, les horaires et un système de réservation en ligne..."></textarea>
                             </div>
                         </div>
-                        <button type="submit" class="form-submit">
+                        <button type="submit" class="form-submit" id="formSubmitBtn">
                             <i data-lucide="send" style="width:18px;height:18px;"></i>
-                            <span>Envoyer ma demande</span>
+                            <span id="formSubmitLabel">Envoyer ma demande</span>
                         </button>
+
+                        <div id="formSuccess" style="display:none; margin-top:18px; padding:18px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:10px; color:#10B981; text-align:center; font-size:0.9rem;">
+                            ✅ Demande envoyée ! Je vous réponds dans les 24h.
+                        </div>
+                        <div id="formError" style="display:none; margin-top:18px; padding:18px; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:10px; color:#EF4444; text-align:center; font-size:0.9rem;">
+                            ⚠️ Une erreur est survenue. Réessayez ou contactez-moi par mail.
+                        </div>
                     </form>
                 </div>
 
@@ -2513,7 +2527,7 @@
                         <i data-lucide="phone" style="width:18px;height:18px;"></i>
                         <span>Appelez-moi</span>
                     </a>
-                    <a href="mailto:contact@votreemail.com" class="btn btn-ghost">
+                    <a href="mailto:qop.pro@gmail.com" class="btn btn-ghost">
                         <i data-lucide="mail" style="width:18px;height:18px;"></i>
                         <span>Envoyez un email</span>
                     </a>
@@ -2942,18 +2956,40 @@
 
         function submitForm(e) {
             e.preventDefault();
-            var f = e.target;
-            var subject = encodeURIComponent('Nouvelle demande de site – ' + f.nom.value);
-            var body = encodeURIComponent(
-                'Nom : ' + f.nom.value + '\n' +
-                'Email : ' + f.email.value + '\n' +
-                'Téléphone : ' + f.telephone.value + '\n' +
-                'Activité : ' + f.activite.value + '\n' +
-                'Type de site : ' + f.type_site.value + '\n' +
-                'Budget : ' + f.budget.value + '\n\n' +
-                'Description du projet :\n' + f.description.value
-            );
-            window.location.href = 'mailto:contact@votreemail.com?subject=' + subject + '&body=' + body;
+            var form = e.target;
+            var btn = document.getElementById('formSubmitBtn');
+            var label = document.getElementById('formSubmitLabel');
+            var success = document.getElementById('formSuccess');
+            var errorBox = document.getElementById('formError');
+
+            success.style.display = 'none';
+            errorBox.style.display = 'none';
+            btn.disabled = true;
+            label.textContent = 'Envoi en cours...';
+
+            var formData = new FormData(form);
+
+            fetch('https://formsubmit.co/ajax/qop.pro@gmail.com', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: formData
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success === 'true' || data.success === true) {
+                    success.style.display = 'block';
+                    form.reset();
+                    label.textContent = 'Envoyer ma demande';
+                    btn.disabled = false;
+                } else {
+                    throw new Error('Échec de l\'envoi');
+                }
+            })
+            .catch(function() {
+                errorBox.style.display = 'block';
+                label.textContent = 'Envoyer ma demande';
+                btn.disabled = false;
+            });
         }
 
         function toggleFaq(btn) {
