@@ -2051,6 +2051,88 @@
             .cursor-dot, .cursor-ring, .cursor-trail-dot {
                 display: none !important;
             }
+
+            /* ============ CARROUSEL SWIPE PORTFOLIO ============ */
+            .portfolio-grid {
+                display: flex !important;
+                grid-template-columns: none !important;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 16px;
+                padding: 8px 20px 24px;
+                margin: 0 -20px;
+                max-width: none !important;
+                scroll-padding: 20px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .portfolio-grid::-webkit-scrollbar {
+                display: none;
+            }
+
+            .portfolio-grid > .portfolio-card {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+                min-width: 0;
+            }
+
+            /* ============ CARROUSEL SWIPE AVIS ============ */
+            .testimonials-grid {
+                display: flex !important;
+                grid-template-columns: none !important;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 16px;
+                padding: 8px 20px 24px;
+                margin: 0 -20px;
+                max-width: none !important;
+                scroll-padding: 20px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .testimonials-grid::-webkit-scrollbar {
+                display: none;
+            }
+
+            .testimonials-grid > .testimonial-card {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+                min-width: 0;
+            }
+
+            /* Indicateur de swipe (petit hint visuel) */
+            .swipe-hint {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                margin-top: -8px;
+                margin-bottom: 16px;
+                font-size: 0.75rem;
+                color: var(--text-muted);
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                font-weight: 600;
+                opacity: 0.7;
+            }
+
+            .swipe-hint svg {
+                width: 14px;
+                height: 14px;
+                animation: swipeHint 1.6s ease-in-out infinite;
+            }
+
+            @keyframes swipeHint {
+                0%, 100% { transform: translateX(-2px); opacity: 0.4; }
+                50% { transform: translateX(4px); opacity: 1; }
+            }
+        }
+
+        /* Sur desktop on cache l'indicateur de swipe */
+        @media (min-width: 641px) {
+            .swipe-hint { display: none; }
         }
     </style>
 </head>
@@ -2316,6 +2398,11 @@
                 <p class="section-desc">Chaque projet est unique, conçu sur mesure pour refléter l'identité du client.</p>
             </div>
 
+            <div class="swipe-hint">
+                <span>Glissez pour voir plus</span>
+                <i data-lucide="arrow-right"></i>
+            </div>
+
             <div class="portfolio-grid">
 
                 <!-- ===== Projet 1 : Boucherie El Djaouda ===== -->
@@ -2459,6 +2546,11 @@
                 </span>
                 <h2 class="section-title">Ce qu'ils en disent</h2>
                 <p class="section-desc">Des clients heureux qui recommandent.</p>
+            </div>
+
+            <div class="swipe-hint">
+                <span>Glissez pour voir plus</span>
+                <i data-lucide="arrow-right"></i>
             </div>
 
             <div class="testimonials-grid">
