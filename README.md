@@ -2,7 +2,7 @@
 
 Site one-page de présentation de mon activité de création de sites web professionnels.
 
-**En ligne :** [zdevelopment.vercel.app](https://zdevelopment.vercel.app)
+**En ligne :** [zdevelopment.fr](https://zdevelopment.fr)
 
 ## Stack
 
