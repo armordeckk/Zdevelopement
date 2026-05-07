@@ -1,0 +1,11 @@
+# robots.txt - Z Development
+# https://zdevelopment.fr
+
+User-agent: *
+Allow: /
+
+# Pages internes / templates non indexables
+Disallow: /documents/
+
+# Sitemap
+Sitemap: https://zdevelopment.fr/sitemap.xml
