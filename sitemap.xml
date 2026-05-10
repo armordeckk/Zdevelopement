@@ -41,4 +41,30 @@
         <priority>0.9</priority>
     </url>
 
+    <!-- Blog -->
+    <url>
+        <loc>https://zdevelopment.fr/blog/</loc>
+        <lastmod>2026-05-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://zdevelopment.fr/blog/site-web-commerce-golfe-saint-tropez.html</loc>
+        <lastmod>2026-05-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://zdevelopment.fr/blog/prix-creation-site-web-var.html</loc>
+        <lastmod>2026-05-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://zdevelopment.fr/blog/site-web-restaurant-hotel-golfe-saint-tropez.html</loc>
+        <lastmod>2026-05-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
 </urlset>

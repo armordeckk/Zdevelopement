@@ -3,6 +3,7 @@
 
 User-agent: *
 Allow: /
+Allow: /blog/
 
 # Pages internes / templates non indexables
 Disallow: /documents/
