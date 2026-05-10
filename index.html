@@ -1638,6 +1638,150 @@
             }
         }
 
+        /* ======================== BLOG PREVIEW (homepage) ======================== */
+        .section-blog {
+            background: var(--bg-soft);
+            padding: 100px 0;
+        }
+
+        .blog-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .blog-preview-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-preview-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .blog-preview-thumb {
+            aspect-ratio: 16 / 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+            color: #fff;
+            font-family: var(--font-display);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-preview-thumb-1 { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+        .blog-preview-thumb-2 { background: linear-gradient(135deg, #065f46 0%, #10b981 100%); }
+        .blog-preview-thumb-3 { background: linear-gradient(135deg, #7c2d12 0%, #f59e0b 100%); }
+
+        .blog-preview-thumb h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            font-style: italic;
+            opacity: 0.95;
+        }
+
+        .blog-preview-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .blog-preview-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        .blog-preview-tag {
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .blog-preview-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.3;
+            letter-spacing: -0.2px;
+        }
+
+        .blog-preview-desc {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .blog-preview-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 6px;
+            transition: gap 0.2s;
+        }
+
+        .blog-preview-card:hover .blog-preview-link {
+            gap: 12px;
+        }
+
+        .blog-preview-link::after { content: '→'; }
+
+        .blog-see-all {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .blog-see-all a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--primary);
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .blog-see-all a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .blog-preview-grid {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+                margin: 0 auto;
+            }
+        }
+
         /* ======================== FORM DÉPLIABLE ======================== */
         .form-toggle {
             display: inline-flex;
@@ -2867,6 +3011,77 @@
         </div>
     </section>
 
+    <!-- ======================== BLOG PREVIEW ======================== -->
+    <section class="section section-blog" id="blog-preview">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-tag">
+                    <i data-lucide="book-open" style="width:16px;height:16px;"></i>
+                    Du blog
+                </span>
+                <h2 class="section-title">Conseils web pour les pros du Var</h2>
+                <p class="section-desc">Articles pratiques sur la création de site internet, le référencement et la stratégie digitale dans le Golfe de Saint-Tropez.</p>
+            </div>
+
+            <div class="blog-preview-grid">
+                <a href="/blog/site-web-commerce-golfe-saint-tropez.html" class="blog-preview-card">
+                    <div class="blog-preview-thumb blog-preview-thumb-1">
+                        <h3>Pourquoi un site web change tout</h3>
+                    </div>
+                    <div class="blog-preview-content">
+                        <div class="blog-preview-meta">
+                            <span class="blog-preview-tag">Stratégie</span>
+                            <span>•</span>
+                            <span>8 min</span>
+                        </div>
+                        <div class="blog-preview-title">Pourquoi votre commerce du Golfe de Saint-Tropez a besoin d'un site web en 2026</div>
+                        <p class="blog-preview-desc">Saint-Tropez, Cogolin, Sainte-Maxime, Grimaud… Les commerçants locaux sous-estiment encore l'impact d'un site internet.</p>
+                        <span class="blog-preview-link">Lire l'article</span>
+                    </div>
+                </a>
+
+                <a href="/blog/prix-creation-site-web-var.html" class="blog-preview-card">
+                    <div class="blog-preview-thumb blog-preview-thumb-2">
+                        <h3>Le vrai prix d'un site pro</h3>
+                    </div>
+                    <div class="blog-preview-content">
+                        <div class="blog-preview-meta">
+                            <span class="blog-preview-tag">Tarifs</span>
+                            <span>•</span>
+                            <span>6 min</span>
+                        </div>
+                        <div class="blog-preview-title">Combien coûte la création d'un site web professionnel dans le Var ?</div>
+                        <p class="blog-preview-desc">Fourchettes de prix réelles, ce qui est inclus et comment éviter les pièges classiques. Transparence totale.</p>
+                        <span class="blog-preview-link">Lire l'article</span>
+                    </div>
+                </a>
+
+                <a href="/blog/site-web-restaurant-hotel-golfe-saint-tropez.html" class="blog-preview-card">
+                    <div class="blog-preview-thumb blog-preview-thumb-3">
+                        <h3>Restaurants &amp; hôtels du Golfe</h3>
+                    </div>
+                    <div class="blog-preview-content">
+                        <div class="blog-preview-meta">
+                            <span class="blog-preview-tag">HCR / Tourisme</span>
+                            <span>•</span>
+                            <span>7 min</span>
+                        </div>
+                        <div class="blog-preview-title">Restaurants, hôtels, bars du Golfe de Saint-Tropez : comment se démarquer en ligne</div>
+                        <p class="blog-preview-desc">La saison touristique amène des milliers de visiteurs. Stratégies concrètes pour se démarquer sur Google.</p>
+                        <span class="blog-preview-link">Lire l'article</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="blog-see-all">
+                <a href="/blog/">
+                    <i data-lucide="layout-list" style="width:18px;height:18px;"></i>
+                    Voir tous les articles
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- ======================== FOOTER ======================== -->
     <footer class="footer">
         <div class="container">
@@ -3085,7 +3300,8 @@
                 '.testimonials-grid',
                 '.faq-list',
                 '.cta-content',
-                '.stats-grid'
+                '.stats-grid',
+                '.blog-preview-grid'
             ];
 
             // Fade-in stagger pour les grilles d'éléments
