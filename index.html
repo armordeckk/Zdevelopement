@@ -1670,27 +1670,33 @@
 
         .blog-preview-thumb {
             aspect-ratio: 16 / 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 28px;
-            color: #fff;
-            font-family: var(--font-display);
-            text-align: center;
             position: relative;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
 
-        .blog-preview-thumb-1 { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
-        .blog-preview-thumb-2 { background: linear-gradient(135deg, #065f46 0%, #10b981 100%); }
-        .blog-preview-thumb-3 { background: linear-gradient(135deg, #7c2d12 0%, #f59e0b 100%); }
+        .blog-preview-thumb::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15,23,42,0) 50%, rgba(15,23,42,0.65) 100%);
+            transition: background 0.3s;
+        }
 
-        .blog-preview-thumb h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            line-height: 1.2;
-            font-style: italic;
-            opacity: 0.95;
+        .blog-preview-card:hover .blog-preview-thumb::after {
+            background: linear-gradient(180deg, rgba(15,23,42,0.1) 0%, rgba(15,23,42,0.75) 100%);
+        }
+
+        .blog-preview-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .blog-preview-card:hover .blog-preview-thumb img {
+            transform: scale(1.08);
         }
 
         .blog-preview-content {
@@ -3025,8 +3031,8 @@
 
             <div class="blog-preview-grid">
                 <a href="/blog/site-web-commerce-golfe-saint-tropez.html" class="blog-preview-card">
-                    <div class="blog-preview-thumb blog-preview-thumb-1">
-                        <h3>Pourquoi un site web change tout</h3>
+                    <div class="blog-preview-thumb">
+                        <img src="/assets/conseilweb.jpg" alt="Conseil web pour commerçants" loading="lazy">
                     </div>
                     <div class="blog-preview-content">
                         <div class="blog-preview-meta">
@@ -3041,8 +3047,8 @@
                 </a>
 
                 <a href="/blog/prix-creation-site-web-var.html" class="blog-preview-card">
-                    <div class="blog-preview-thumb blog-preview-thumb-2">
-                        <h3>Le vrai prix d'un site pro</h3>
+                    <div class="blog-preview-thumb">
+                        <img src="/assets/golfesttropez.jpg" alt="Golfe de Saint-Tropez" loading="lazy">
                     </div>
                     <div class="blog-preview-content">
                         <div class="blog-preview-meta">
@@ -3057,8 +3063,8 @@
                 </a>
 
                 <a href="/blog/site-web-restaurant-hotel-golfe-saint-tropez.html" class="blog-preview-card">
-                    <div class="blog-preview-thumb blog-preview-thumb-3">
-                        <h3>Restaurants &amp; hôtels du Golfe</h3>
+                    <div class="blog-preview-thumb">
+                        <img src="/assets/hotelresto.jpg" alt="Restaurants et hôtels du Golfe" loading="lazy">
                     </div>
                     <div class="blog-preview-content">
                         <div class="blog-preview-meta">

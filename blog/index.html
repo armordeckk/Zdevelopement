@@ -146,26 +146,26 @@
         .article-thumb {
             aspect-ratio: 16 / 10;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
-            padding: 32px;
-            color: #fff;
-            font-family: 'Playfair Display', serif;
-            text-align: center;
+            display: block;
         }
 
-        .article-thumb-1 { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
-        .article-thumb-2 { background: linear-gradient(135deg, #065f46 0%, #10b981 100%); }
-        .article-thumb-3 { background: linear-gradient(135deg, #7c2d12 0%, #f59e0b 100%); }
+        .article-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-        .article-thumb h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            line-height: 1.2;
-            font-style: italic;
-            opacity: 0.9;
+        .article-card:hover .article-thumb img {
+            transform: scale(1.08);
+        }
+
+        .article-thumb::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15,23,42,0) 50%, rgba(15,23,42,0.5) 100%);
         }
 
         .article-content {
@@ -305,8 +305,8 @@
             <div class="articles-grid">
 
                 <article class="article-card">
-                    <a href="/blog/site-web-commerce-golfe-saint-tropez.html" class="article-thumb article-thumb-1">
-                        <h2>Pourquoi un site web change tout pour un commerce local</h2>
+                    <a href="/blog/site-web-commerce-golfe-saint-tropez.html" class="article-thumb">
+                        <img src="/assets/conseilweb.jpg" alt="Conseil web pour commerçants du Golfe de Saint-Tropez" loading="lazy">
                     </a>
                     <div class="article-content">
                         <div class="article-meta">
@@ -321,8 +321,8 @@
                 </article>
 
                 <article class="article-card">
-                    <a href="/blog/prix-creation-site-web-var.html" class="article-thumb article-thumb-2">
-                        <h2>Le vrai prix d'un site web pro</h2>
+                    <a href="/blog/prix-creation-site-web-var.html" class="article-thumb">
+                        <img src="/assets/golfesttropez.jpg" alt="Vue du Golfe de Saint-Tropez - Tarifs création de site" loading="lazy">
                     </a>
                     <div class="article-content">
                         <div class="article-meta">
@@ -337,8 +337,8 @@
                 </article>
 
                 <article class="article-card">
-                    <a href="/blog/site-web-restaurant-hotel-golfe-saint-tropez.html" class="article-thumb article-thumb-3">
-                        <h2>Restaurants &amp; hôtels du Golfe : se démarquer en ligne</h2>
+                    <a href="/blog/site-web-restaurant-hotel-golfe-saint-tropez.html" class="article-thumb">
+                        <img src="/assets/hotelresto.jpg" alt="Restaurants et hôtels du Golfe de Saint-Tropez" loading="lazy">
                     </a>
                     <div class="article-content">
                         <div class="article-meta">
