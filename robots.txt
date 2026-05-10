@@ -4,9 +4,11 @@
 User-agent: *
 Allow: /
 Allow: /blog/
+Allow: /villes/
 
 # Pages internes / templates non indexables
 Disallow: /documents/
+Disallow: /avis.html
 
 # Sitemap
 Sitemap: https://zdevelopment.fr/sitemap.xml

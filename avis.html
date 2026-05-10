@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laisser un avis - Z Development</title>
+    <meta name="description" content="Vous avez travaillé avec Z Development ? Partagez votre expérience en laissant un avis Google pour aider d'autres commerçants à nous découvrir.">
+    <meta name="robots" content="noindex, follow">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --primary:#0F172A; --accent:#3B82F6; --accent-light:#60A5FA; --accent-dark:#2563EB; --gold:#F59E0B; --text:#334155; --text-light:#64748B; --border:#E2E8F0; --bg:#FFFFFF; --bg-soft:#F8FAFC; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',-apple-system,sans-serif; color:var(--text); background:linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%); line-height:1.7; min-height:100vh; -webkit-font-smoothing:antialiased; display:flex; align-items:center; justify-content:center; padding:24px; }
+
+        .review-card {
+            max-width: 540px;
+            width: 100%;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(15,23,42,0.08), 0 0 0 1px var(--border);
+            overflow: hidden;
+        }
+
+        .review-header {
+            background: linear-gradient(135deg, var(--primary), #1e293b);
+            color: #fff;
+            padding: 50px 36px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .review-header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .review-logo {
+            display: inline-block;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-logo span { color: var(--accent-light); }
+
+        .review-stars {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 20px;
+            color: var(--gold);
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            max-width: 380px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-body {
+            padding: 40px 36px;
+        }
+
+        .review-body p {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 18px;
+        }
+
+        .review-body p:last-of-type { margin-bottom: 24px; }
+
+        .btn-google {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px 24px;
+            background: #fff;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            color: var(--primary);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            margin-bottom: 12px;
+        }
+
+        .btn-google:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+        }
+
+        .btn-google img {
+            width: 22px;
+            height: 22px;
+        }
+
+        .btn-google-icon {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            background: linear-gradient(135deg, #EA4335 0%, #FBBC05 33%, #34A853 66%, #4285F4 100%);
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .btn-google-icon::before {
+            content: 'G';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .btn-secondary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--bg-soft);
+            border: none;
+            border-radius: 10px;
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        .review-footer {
+            border-top: 1px solid var(--border);
+            padding: 20px 36px;
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--text-light);
+        }
+
+        .review-footer a { color: var(--accent); text-decoration: none; }
+
+        .thanks-emoji {
+            font-size: 2.4rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="review-card">
+        <div class="review-header">
+            <div class="review-logo">Z<span>.</span>Development</div>
+            <span class="thanks-emoji">🙏</span>
+            <div class="review-stars">★ ★ ★ ★ ★</div>
+            <h1>Merci pour votre confiance</h1>
+            <p>Votre avis compte énormément pour le développement de mon activité.</p>
+        </div>
+
+        <div class="review-body">
+            <p>Si vous avez été satisfait(e) du site que j'ai conçu pour vous, prenez <strong>30 secondes</strong> pour laisser un avis sur Google. C'est le meilleur cadeau que vous puissiez me faire.</p>
+
+            <p>Vos retours aident d'autres commerçants du Var et du Golfe de Saint-Tropez à me découvrir, et me permettent de continuer à proposer des sites web de qualité à des tarifs justes.</p>
+
+            <!-- Remplace l'URL ci-dessous par ton vrai lien Google My Business -->
+            <!-- Format : https://g.page/r/CXXXXX/review (récupérable depuis Google My Business) -->
+            <a href="https://g.page/r/REMPLACER-PAR-VOTRE-LIEN-GMB/review" target="_blank" class="btn-google">
+                <span class="btn-google-icon"></span>
+                <span>Laisser un avis sur Google</span>
+            </a>
+
+            <a href="/" class="btn-secondary">
+                <span>← Retour au site</span>
+            </a>
+        </div>
+
+        <div class="review-footer">
+            Pour toute question, contactez-moi par <a href="mailto:qop.pro@gmail.com">email</a> ou au <a href="tel:+33745276614">07 45 27 66 14</a>.
+        </div>
+    </div>
+
+</body>
+</html>

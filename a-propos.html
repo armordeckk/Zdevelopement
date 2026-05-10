@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - Zine-Eddine Abalou, développeur web freelance Var | Z Development</title>
+    <meta name="description" content="Découvrez Zine-Eddine Abalou, développeur web freelance basé à Cogolin dans le Var. Passion du code, design soigné, accompagnement humain pour les commerçants du Golfe de Saint-Tropez.">
+    <meta name="keywords" content="Zine-Eddine Abalou, développeur web Var, freelance web Cogolin, Z Development, à propos, parcours">
+    <meta name="author" content="Zine-Eddine Abalou">
+    <meta name="theme-color" content="#0F172A">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zdevelopment.fr/a-propos.html">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="À propos - Zine-Eddine Abalou, développeur web Var">
+    <meta property="og:description" content="Développeur web freelance basé à Cogolin. Spécialisé dans la création de sites pour les commerçants du Golfe de Saint-Tropez.">
+    <meta property="og:image" content="https://zdevelopment.fr/assets/hero-bg.png">
+    <meta property="og:url" content="https://zdevelopment.fr/a-propos.html">
+    <meta property="og:locale" content="fr_FR">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Zine-Eddine Abalou",
+      "jobTitle": "Développeur Web Freelance",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Z Development",
+        "url": "https://zdevelopment.fr"
+      },
+      "url": "https://zdevelopment.fr/a-propos.html",
+      "image": "https://zdevelopment.fr/assets/zine-eddine.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cogolin",
+        "postalCode": "83310",
+        "addressCountry": "FR"
+      },
+      "knowsAbout": ["Création de sites web", "HTML", "CSS", "JavaScript", "SEO", "Design web", "React", "WordPress"]
+    }
+    </script>
+
+    <style>
+        :root { --primary:#0F172A; --accent:#3B82F6; --accent-light:#60A5FA; --accent-dark:#2563EB; --text:#334155; --text-light:#64748B; --text-muted:#94A3B8; --border:#E2E8F0; --bg:#FFFFFF; --bg-soft:#F8FAFC; --success:#10B981; --radius:16px; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',-apple-system,sans-serif; color:var(--text); background:var(--bg); line-height:1.8; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+        html { overflow-x:hidden; }
+        a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+        .container { max-width:1120px; margin:0 auto; padding:0 24px; }
+
+        .navbar { background:var(--primary); padding:20px 0; }
+        .navbar-inner { display:flex; align-items:center; justify-content:space-between; max-width:1120px; margin:0 auto; padding:0 24px; }
+        .navbar-logo { font-size:1.15rem; font-weight:800; color:#fff; }
+        .navbar-logo span { color:var(--accent-light); }
+        .navbar-back { display:inline-flex; gap:8px; font-size:0.9rem; color:rgba(255,255,255,0.7); }
+        .navbar-back:hover { color:#fff; text-decoration:none; }
+
+        /* HERO ABOUT */
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary), #1e293b);
+            color: #fff;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .about-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .breadcrumbs { font-size:0.82rem; color:rgba(255,255,255,0.55); margin-bottom:20px; }
+        .breadcrumbs a { color:rgba(255,255,255,0.8); }
+        .breadcrumbs span { margin:0 8px; }
+
+        .about-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-light);
+            background: rgba(59,130,246,0.12);
+            padding: 6px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .about-hero h1 span {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-hero p.lead {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            max-width: 540px;
+        }
+
+        .about-photo {
+            width: 280px;
+            height: 280px;
+            border-radius: 24px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border: 4px solid rgba(255,255,255,0.06);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-photo-placeholder {
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.15);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .quick-info {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .quick-info-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .quick-info-item strong { color: #fff; font-weight: 600; }
+
+        /* SECTIONS */
+        .section { padding: 80px 0; }
+        .section-soft { background: var(--bg-soft); }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .section-tag-light {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .section h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 14px;
+        }
+
+        .section .desc {
+            font-size: 1.02rem;
+            color: var(--text-light);
+        }
+
+        .content-block { max-width: 780px; margin: 0 auto; }
+        .content-block p { font-size: 1.05rem; margin-bottom: 20px; }
+        .content-block h3 { font-size: 1.3rem; font-weight: 800; color: var(--primary); margin: 36px 0 14px; }
+        .content-block strong { color: var(--primary); font-weight: 700; }
+
+        /* VALUES GRID */
+        .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .value-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: all 0.3s;
+        }
+        .value-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(15,23,42,0.08);
+        }
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        .value-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+        .value-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.7; margin: 0; }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-size: 0.92rem;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .skill-tag .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), #1e293b);
+            color: #fff;
+            text-align: center;
+            padding: 80px 0;
+        }
+        .cta-section h2 { color: #fff; font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 14px; }
+        .cta-section p { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 560px; margin: 0 auto 30px; }
+        .btn-accent { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff !important; padding: 14px 30px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none !important; transition: all 0.3s; }
+        .btn-accent:hover { background: var(--accent-dark); transform: translateY(-2px); }
+
+        /* FOOTER */
+        .footer { background: var(--primary); padding: 28px 0; text-align: center; }
+        .footer p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+        .footer a { color: rgba(255,255,255,0.6); }
+
+        @media (max-width: 768px) {
+            .about-hero { padding: 50px 0; }
+            .about-hero-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+            .about-photo { margin: 0 auto; width: 220px; height: 220px; }
+            .quick-info { justify-content: center; }
+            .section, .cta-section { padding: 50px 0; }
+            .values-grid { grid-template-columns: 1fr; }
+            .about-hero p.lead { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="navbar-logo">Z<span>.</span>Development</a>
+            <a href="/" class="navbar-back">← Retour au site</a>
+        </div>
+    </nav>
+
+    <header class="about-hero">
+        <div class="container">
+            <nav class="breadcrumbs" aria-label="Fil d'Ariane">
+                <a href="/">Accueil</a><span>›</span>À propos
+            </nav>
+            <div class="about-hero-grid">
+                <div>
+                    <span class="about-tag">À propos</span>
+                    <h1>Salut, moi c'est <span>Zine-Eddine</span></h1>
+                    <p class="lead">Développeur web freelance basé à Cogolin, j'aide les commerçants et entreprises du Golfe de Saint-Tropez à se créer une vraie présence en ligne. Sans bullshit, sans intermédiaire, sans engagement.</p>
+                    <div class="quick-info">
+                        <div class="quick-info-item">📍 <strong>Cogolin (83)</strong></div>
+                        <div class="quick-info-item">💼 <strong>Z Development</strong></div>
+                        <div class="quick-info-item">⚡ <strong>Réponse en 24h</strong></div>
+                    </div>
+                </div>
+                <div class="about-photo">
+                    <!-- Remplace par une vraie photo : assets/zine-eddine.jpg -->
+                    <span class="about-photo-placeholder">Z</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="content-block">
+                <h3>Mon parcours, ma philosophie</h3>
+
+                <p>Depuis plusieurs années, je développe ma passion pour le web : de la première ligne de code HTML aux architectures plus complexes en React, en passant par le design d'interface et l'optimisation SEO. Mais ce qui m'anime le plus, c'est <strong>l'impact concret</strong> qu'un bon site peut avoir sur l'activité d'un commerçant ou d'un artisan local.</p>
+
+                <p>Quand j'ai lancé <strong>Z Development</strong>, l'idée était simple : <em>arrêter de voir des commerces locaux dans le Var avec des sites datés, mal référencés ou pire, sans site du tout</em>. Le résultat, c'est une perte directe de clients face à des concurrents mieux organisés. Et c'est complètement évitable.</p>
+
+                <h3>Pourquoi je travaille en freelance et pas en agence</h3>
+
+                <p>Les grandes agences web ont leur intérêt, mais elles imposent souvent :</p>
+
+                <p>— Des <strong>process lourds</strong> et des délais étirés<br>
+                — Une <strong>chaîne de sous-traitance</strong> qui dilue la qualité<br>
+                — Des <strong>tarifs gonflés</strong> par les frais de structure<br>
+                — Un <strong>commercial entre vous et le développeur</strong> — pas le créateur réel</p>
+
+                <p>En freelance, je peux te proposer une approche radicalement différente : <strong>un contact direct, une vision claire, un travail rapide et un prix juste</strong>. Tu parles à la personne qui code, qui designe et qui prend les décisions.</p>
+
+                <h3>Pourquoi le Golfe de Saint-Tropez</h3>
+
+                <p>Vivre dans le Var, c'est avoir la chance d'être au cœur d'une région exceptionnellement dynamique : touristes du monde entier, commerçants passionnés, restaurants et hôtels d'exception, artisans qui perpétuent un savoir-faire local. Je veux contribuer à ce que cette richesse <strong>rayonne aussi sur internet</strong>, là où tout se joue désormais.</p>
+
+                <p>Que tu sois à <a href="/villes/agence-web-cogolin.html">Cogolin</a>, <a href="/villes/agence-web-saint-tropez.html">Saint-Tropez</a>, <a href="/villes/agence-web-sainte-maxime.html">Sainte-Maxime</a>, <a href="/villes/agence-web-grimaud.html">Grimaud</a>, <a href="/villes/agence-web-ramatuelle.html">Ramatuelle</a> ou ailleurs dans le Var, je peux passer te voir pour comprendre ton activité avant de te proposer une solution adaptée.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-soft">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag-light">Mes valeurs</span>
+                <h2>Ce qui guide mon travail au quotidien</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Transparence totale</h3>
+                    <p>Pas de jargon technique, pas de prix flous, pas de promesse exagérée. Tu sais exactement ce que tu paies et pourquoi, à chaque étape du projet.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Réactivité</h3>
+                    <p>Je réponds en moins de 24h. Une question, une modification, une demande urgente ? Tu ne te retrouves jamais bloqué sans réponse.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>Travail sur mesure</h3>
+                    <p>Pas de template générique vu sur 10 000 sites. Chaque projet est conçu pour refléter <em>ton</em> identité, <em>tes</em> clients, <em>ton</em> activité.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🛠️</div>
+                    <h3>Qualité technique</h3>
+                    <p>Code propre, performant, sécurisé. Sites pensés pour durer, faciles à faire évoluer, optimisés pour Google et pour le mobile.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">📍</div>
+                    <h3>Présence locale</h3>
+                    <p>Je suis à Cogolin, pas à Paris. Je peux passer dans ton commerce, sentir l'ambiance, comprendre ta clientèle. C'est ce qui fait la différence.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3>Relation durable</h3>
+                    <p>Mon objectif n'est pas de te vendre un site et de disparaître. C'est de construire une relation longue, basée sur la confiance et le résultat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag-light">Compétences</span>
+                <h2>Les outils et technologies que je maîtrise</h2>
+                <p class="desc">Choix de technologies adaptées à chaque projet : performance, simplicité, durabilité.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-tag"><span class="dot"></span>HTML5 & CSS3</div>
+                <div class="skill-tag"><span class="dot"></span>JavaScript moderne</div>
+                <div class="skill-tag"><span class="dot"></span>React.js</div>
+                <div class="skill-tag"><span class="dot"></span>WordPress</div>
+                <div class="skill-tag"><span class="dot"></span>Shopify & e-commerce</div>
+                <div class="skill-tag"><span class="dot"></span>Référencement SEO</div>
+                <div class="skill-tag"><span class="dot"></span>Design UX/UI</div>
+                <div class="skill-tag"><span class="dot"></span>Responsive Mobile</div>
+                <div class="skill-tag"><span class="dot"></span>Hébergement & DNS</div>
+                <div class="skill-tag"><span class="dot"></span>Google Analytics</div>
+                <div class="skill-tag"><span class="dot"></span>Schema.org & SEO local</div>
+                <div class="skill-tag"><span class="dot"></span>Performance web</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Envie d'échanger autour d'un projet ?</h2>
+            <p>Que ton idée soit claire ou encore floue, je suis là pour t'écouter et te proposer la meilleure solution. Sans engagement.</p>
+            <a href="/#contact" class="btn-accent">Discutons de ton projet →</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 <a href="/">Z Development</a> — Zine-Eddine Abalou, développeur web freelance dans le Var</p>
+        </div>
+    </footer>
+
+</body>
+</html>
