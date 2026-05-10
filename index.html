@@ -46,7 +46,7 @@
     }
     </script>
 
-    <!-- Schema FAQ pour featured snippets Google -->
+    <!-- Schema FAQ pour featured snippets Google (6 questions visibles sur la home) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -57,16 +57,7 @@
         { "@type": "Question", "name": "Est-ce que je peux modifier mon site moi-même ?", "acceptedAnswer": { "@type": "Answer", "text": "Vous n'avez pas besoin de toucher au code. Je m'occupe de toutes les modifications pour vous : changer un horaire, ajouter une photo, mettre à jour un menu, créer une promotion." } },
         { "@type": "Question", "name": "Que comprend le forfait maintenance ?", "acceptedAnswer": { "@type": "Answer", "text": "Le forfait maintenance inclut l'hébergement web, le nom de domaine, le certificat SSL, les sauvegardes régulières, les mises à jour de sécurité, les modifications ponctuelles et le support." } },
         { "@type": "Question", "name": "Je n'ai pas de contenu (textes, photos), c'est un problème ?", "acceptedAnswer": { "@type": "Answer", "text": "Pas du tout. Je peux vous aider à rédiger vos textes en interview, et utiliser des photos professionnelles libres de droits adaptées à votre activité." } },
-        { "@type": "Question", "name": "Puis-je résilier mon forfait à tout moment ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, les forfaits de maintenance sont sans engagement. Vous pouvez résilier à tout moment avec un préavis de 30 jours, sans frais supplémentaires." } },
-        { "@type": "Question", "name": "Mon site apparaîtra-t-il sur Google ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Chaque site est livré avec une optimisation SEO de base : balises titre, méta-descriptions, sitemap, données structurées Schema.org, vitesse de chargement optimisée." } },
-        { "@type": "Question", "name": "Le site sera-t-il bien sur mobile ?", "acceptedAnswer": { "@type": "Answer", "text": "Tous les sites sont en responsive design : ils s'affichent parfaitement sur mobile, tablette et ordinateur. 70 % des visites de sites locaux se font désormais depuis un smartphone." } },
-        { "@type": "Question", "name": "À qui appartient le site une fois livré ?", "acceptedAnswer": { "@type": "Answer", "text": "Le site vous appartient intégralement dès le paiement complet. Le code source, le design, les contenus, le nom de domaine — tout est à vous. Aucune dépendance technique." } },
-        { "@type": "Question", "name": "Quelles villes du Var couvrez-vous ?", "acceptedAnswer": { "@type": "Answer", "text": "Je suis basé à Cogolin et j'interviens prioritairement dans le Golfe de Saint-Tropez : Cogolin, Saint-Tropez, Sainte-Maxime, Grimaud, Ramatuelle, Gassin, La Croix-Valmer. Je peux aussi travailler à distance pour tout le Var et la France." } },
-        { "@type": "Question", "name": "Comment se déroule un projet, étape par étape ?", "acceptedAnswer": { "@type": "Answer", "text": "4 étapes : échange initial pour comprendre vos besoins, devis détaillé et planning, conception et développement avec validation à chaque étape, mise en ligne et maintenance continue." } },
-        { "@type": "Question", "name": "Acceptez-vous les paiements en plusieurs fois ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Le paiement classique se fait en deux fois : 50 % à la signature du devis, 50 % à la livraison. Pour les gros projets, un échelonnement en 3 ou 4 fois est possible." } },
-        { "@type": "Question", "name": "Le site sera-t-il sécurisé HTTPS ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, tous les sites sont livrés avec un certificat SSL inclus, le cadenas vert qui passe l'URL en HTTPS. Essentiel pour la confiance, le RGPD et le référencement Google." } },
-        { "@type": "Question", "name": "Puis-je avoir un système de réservation en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Absolument. Restaurants, coiffeurs, médecins, hôteliers, plages privées : je peux intégrer un système de réservation complet avec confirmation, rappels et synchronisation Google Calendar." } },
-        { "@type": "Question", "name": "Pourquoi choisir un freelance local plutôt qu'une agence ?", "acceptedAnswer": { "@type": "Answer", "text": "Avec un freelance local, vous parlez directement à la personne qui crée votre site. Délais plus courts, tarifs plus justes, relation plus humaine. Le meilleur compromis pour un commerce de proximité." } }
+        { "@type": "Question", "name": "Puis-je résilier mon forfait à tout moment ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, les forfaits de maintenance sont sans engagement. Vous pouvez résilier à tout moment avec un préavis de 30 jours, sans frais supplémentaires." } }
       ]
     }
     </script>
@@ -2141,6 +2132,33 @@
             line-height: 1.7;
         }
 
+        .faq-see-all {
+            display: flex;
+            justify-content: center;
+            margin-top: 36px;
+        }
+
+        .btn-faq-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--primary);
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-faq-all:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(15,23,42,0.06);
+        }
+
         @media (max-width: 768px) {
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -2439,7 +2457,7 @@
                     <a href="#services">Services</a>
                     <a href="#portfolio">Réalisations</a>
                     <a href="/a-propos.html">À propos</a>
-                    <a href="#faq">FAQ</a>
+                    <a href="/faq.html">FAQ</a>
                     <a href="/blog/">Blog</a>
                     <a href="#contact" class="navbar-cta magnetic" data-magnetic>Me contacter</a>
                 </div>
@@ -2929,95 +2947,14 @@
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Mon site apparaîtra-t-il sur Google ?</span>
-                        <i data-lucide="chevron-down" style="width:18px;height:18px;" class="faq-chevron"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Oui. Chaque site est livré avec une optimisation SEO de base : balises titre, méta-descriptions, sitemap, données structurées Schema.org, vitesse de chargement optimisée. Pour un référencement local Cogolin, Saint-Tropez, Sainte-Maxime, le forfait Pro inclut un travail SEO plus poussé et une fiche Google My Business optimisée.</p>
-                    </div>
-                </div>
+            </div>
 
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Le site sera-t-il bien sur mobile ?</span>
-                        <i data-lucide="chevron-down" style="width:18px;height:18px;" class="faq-chevron"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Tous les sites que je crée sont en responsive design : ils s'affichent parfaitement sur mobile, tablette et ordinateur. C'est essentiel quand on sait que 70 % des visites de sites locaux se font désormais depuis un smartphone, en particulier les recherches touristiques dans le Golfe de Saint-Tropez.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>À qui appartient le site une fois livré ?</span>
-                        <i data-lucide="chevron-down" style="width:18px;height:18px;" class="faq-chevron"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Le site vous appartient intégralement dès le paiement complet. Le code source, le design, les contenus, le nom de domaine — tout est à vous. Vous pouvez l'emporter chez un autre prestataire à tout moment si vous le souhaitez. Aucune dépendance technique.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Quelles villes du Var couvrez-vous ?</span>
-                        <i data-lucide="chevron-down" style="width:18px;height:18px;" class="faq-chevron"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Je suis basé à Cogolin et j'interviens prioritairement dans le Golfe de Saint-Tropez : <a href="/villes/agence-web-cogolin.html">Cogolin</a>, <a href="/villes/agence-web-saint-tropez.html">Saint-Tropez</a>, <a href="/villes/agence-web-sainte-maxime.html">Sainte-Maxime</a>, <a href="/villes/agence-web-grimaud.html">Grimaud</a>, <a href="/villes/agence-web-ramatuelle.html">Ramatuelle</a>, Gassin, La Croix-Valmer. Je peux aussi travailler à distance pour tout le Var et la France entière — la majorité des échanges se font en visio ou téléphone.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Comment se déroule un projet, étape par étape ?</span>
-                        <i data-lucide="chevron-down" style="width:18px;height:18px;" class="faq-chevron"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Le processus en 4 étapes : 1) Échange initial (téléphone ou rendez-vous) pour comprendre vos besoins. 2) Devis détaillé et planning. 3) Conception et développement avec validation des maquettes à chaque étape. 4) Mise en ligne, formation rapide si besoin, puis maintenance continue. Chaque étape est validée par vous avant de passer à la suivante.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Acceptez-vous les paiements en plusieurs fois ?</span>
-                        <i data-lucide="chevron-down" style="width:18px;height:18px;" class="faq-chevron"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Oui. Le paiement classique se fait en deux fois : 50 % à la signature du devis (acompte), 50 % à la livraison du site. Pour les gros projets (e-commerce, sites complexes), un échelonnement en 3 ou 4 fois est possible. Paiement par virement bancaire.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Le site sera-t-il sécurisé (HTTPS) ?</span>
-                        <i data-lucide="chevron-down" style="width:18px;height:18px;" class="faq-chevron"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Oui, tous les sites sont livrés avec un certificat SSL inclus, le fameux "cadenas vert" qui passe l'URL en HTTPS. C'est essentiel pour la confiance des visiteurs, la conformité RGPD, et c'est un critère de référencement Google. Le SSL est gratuit et renouvelé automatiquement.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Puis-je avoir un système de réservation en ligne ?</span>
-                        <i data-lucide="chevron-down" style="width:18px;height:18px;" class="faq-chevron"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Absolument. Que vous soyez restaurateur, coiffeur, médecin, hôtelier ou plage privée, je peux intégrer un système de réservation en ligne : choix du créneau, confirmation automatique par email, rappel avant le rendez-vous, synchronisation avec votre calendrier (Google Calendar par exemple), gestion des annulations.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Pourquoi choisir un freelance local plutôt qu'une agence ?</span>
-                        <i data-lucide="chevron-down" style="width:18px;height:18px;" class="faq-chevron"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Avec un freelance local, vous parlez directement à la personne qui crée votre site — pas un commercial, pas un chef de projet, pas un intermédiaire. Les délais sont plus courts, les tarifs plus justes (pas de marge agence), et la relation est plus humaine. Pour un commerce de proximité dans le Var, c'est généralement le meilleur compromis.</p>
-                    </div>
-                </div>
+            <div class="faq-see-all">
+                <a href="/faq.html" class="btn-faq-all">
+                    <i data-lucide="list" style="width:18px;height:18px;"></i>
+                    <span>Voir toutes les questions (15)</span>
+                    <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -3245,7 +3182,7 @@
                         <a href="#services">Services</a>
                         <a href="#portfolio">Réalisations</a>
                         <a href="/a-propos.html">À propos</a>
-                        <a href="#faq">FAQ</a>
+                        <a href="/faq.html">FAQ</a>
                         <a href="/blog/">Blog</a>
                         <a href="#contact">Contact</a>
                     </div>
