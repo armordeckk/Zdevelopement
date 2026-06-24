@@ -30,3 +30,6 @@ yarn-error.log
 
 # Scripts utilitaires
 generate_favicon.py
+
+# Documents privés (devis, factures, contrats avec infos perso)
+documents/
