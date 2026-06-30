@@ -27,26 +27,59 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
+    <!-- Breadcrumb -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://zdevelopment.fr/" },
+        { "@type": "ListItem", "position": 2, "name": "À propos", "item": "https://zdevelopment.fr/a-propos.html" }
+      ]
+    }
+    </script>
+
+    <!-- Person schema enrichi -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://zdevelopment.fr/a-propos.html#person",
       "name": "Zine-Eddine Abalou",
       "jobTitle": "Développeur Web Freelance",
+      "description": "Développeur web freelance basé à Cogolin (Var), spécialisé dans la création de sites internet sur mesure pour les commerçants et entreprises du Golfe de Saint-Tropez.",
       "worksFor": {
         "@type": "Organization",
+        "@id": "https://zdevelopment.fr/#business",
         "name": "Z Development",
-        "url": "https://zdevelopment.fr"
+        "url": "https://zdevelopment.fr/"
       },
       "url": "https://zdevelopment.fr/a-propos.html",
       "image": "https://zdevelopment.fr/assets/zine-eddine.jpg",
+      "telephone": "+33745276614",
+      "email": "qop.pro@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Cogolin",
         "postalCode": "83310",
+        "addressRegion": "Var",
         "addressCountry": "FR"
       },
-      "knowsAbout": ["Création de sites web", "HTML", "CSS", "JavaScript", "SEO", "Design web", "React", "WordPress"]
+      "knowsAbout": [
+        "Création de sites web",
+        "HTML5", "CSS3", "JavaScript",
+        "React.js",
+        "WordPress",
+        "Shopify",
+        "Référencement SEO",
+        "SEO local",
+        "Schema.org",
+        "Design UX/UI",
+        "Responsive Web Design",
+        "Performance Web"
+      ],
+      "knowsLanguage": ["fr", "en"],
+      "sameAs": []
     }
     </script>
 

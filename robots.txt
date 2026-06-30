@@ -7,7 +7,7 @@ Allow: /blog/
 Allow: /villes/
 
 # Pages internes / templates non indexables
-Disallow: /avis.html
+Disallow: /avis
 
 # Sitemap
 Sitemap: https://zdevelopment.fr/sitemap.xml

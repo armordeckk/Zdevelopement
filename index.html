@@ -12,26 +12,49 @@
     <meta name="googlebot" content="index, follow">
     <link rel="canonical" href="https://zdevelopment.fr/">
 
-    <!-- Données structurées Schema.org : LocalBusiness -->
+    <!-- WebSite schema pour ancrage entité Knowledge Graph -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://zdevelopment.fr/#website",
+      "name": "Z Development",
+      "url": "https://zdevelopment.fr/",
+      "description": "Création de sites web professionnels pour commerçants et entreprises du Var. Freelance basé à Cogolin.",
+      "inLanguage": "fr-FR",
+      "publisher": { "@id": "https://zdevelopment.fr/#business" }
+    }
+    </script>
+
+    <!-- Données structurées Schema.org : ProfessionalService (Local Business) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
+      "@id": "https://zdevelopment.fr/#business",
       "name": "Z Development",
       "image": "https://zdevelopment.fr/assets/hero-bg.png",
-      "url": "https://zdevelopment.fr",
+      "url": "https://zdevelopment.fr/",
       "telephone": "+33745276614",
       "email": "qop.pro@gmail.com",
       "description": "Création de sites web professionnels pour commerçants et entreprises. Sites vitrines, réservation, e-commerce avec hébergement et maintenance inclus.",
+      "priceRange": "€€",
       "founder": {
         "@type": "Person",
+        "@id": "https://zdevelopment.fr/a-propos.html#person",
         "name": "Zine-Eddine Abalou"
       },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Cogolin",
         "postalCode": "83310",
+        "addressRegion": "Var",
         "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.2511,
+        "longitude": 6.5297
       },
       "areaServed": [
         { "@type": "City", "name": "Cogolin" },
@@ -39,9 +62,28 @@
         { "@type": "City", "name": "Sainte-Maxime" },
         { "@type": "City", "name": "Grimaud" },
         { "@type": "City", "name": "Ramatuelle" },
+        { "@type": "AdministrativeArea", "name": "Var" },
         { "@type": "Country", "name": "France" }
       ],
-      "priceRange": "€€",
+      "serviceArea": {
+        "@type": "AdministrativeArea",
+        "name": "Var"
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }],
+      "knowsAbout": [
+        "Création de sites web",
+        "Site vitrine",
+        "Site e-commerce",
+        "Site avec réservation",
+        "Référencement SEO",
+        "Maintenance web",
+        "Hébergement web"
+      ],
       "sameAs": []
     }
     </script>
@@ -92,7 +134,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Preload du LCP hero pour améliorer le score Core Web Vitals -->
+    <link rel="preload" as="image" href="/assets/hero-bg.png" fetchpriority="high">
+
+    <script defer src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
 
     <!-- Google Analytics 4 -->
     <!-- Remplace G-XXXXXXXXXX par ton Measurement ID GA4 (récupéré sur analytics.google.com) -->
@@ -3270,7 +3316,7 @@
     </div>
 
     <!-- Lenis smooth scroll -->
-    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 
     <script>
         if (typeof lucide !== 'undefined') lucide.createIcons();
