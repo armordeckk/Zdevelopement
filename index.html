@@ -3321,7 +3321,19 @@
     <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 
     <script>
-        if (typeof lucide !== 'undefined') lucide.createIcons();
+        // Lucide est chargé en defer, on attend qu'il soit prêt
+        function initLucideIcons() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                setTimeout(initLucideIcons, 50);
+            }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initLucideIcons);
+        } else {
+            initLucideIcons();
+        }
 
         // ============ LOADING SCREEN ============
         window.addEventListener('load', function() {
